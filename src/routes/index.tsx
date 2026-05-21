@@ -38,14 +38,14 @@ function Index() {
     <main className="min-h-screen px-6 py-16 sm:py-24">
       <div className="mx-auto max-w-2xl text-center">
         <p className="mb-6 text-xs uppercase tracking-[0.25em] text-[color:var(--color-brand-gold)]">
-          Cultural Catalysts · Free assessment
+          Cultural Catalysts · Free quiz
         </p>
         <h1 className="text-balance text-4xl leading-[1.05] sm:text-6xl">
           What type of <em className="italic">Cultural Catalyst</em> are you?
         </h1>
         <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-[color:var(--color-brand-ink-soft)]">
-          A 16-question reflection that reveals where your work is reshaping
-          culture — and where you stand on John Maxwell's 5 Levels of Leadership.
+          A quiz to reveal your impact as a Cultural Catalyst and the key to
+          your next level of leadership.
         </p>
 
         <ul className="mx-auto mt-10 grid max-w-md gap-3 text-left text-sm text-[color:var(--color-brand-ink-soft)]">
@@ -72,7 +72,7 @@ function Index() {
             Begin the assessment
           </Link>
           <p className="mt-4 text-xs text-[color:var(--color-brand-ink-soft)]">
-            16 questions · ~4 minutes
+            17 questions · ~4 minutes
           </p>
         </div>
       </div>
