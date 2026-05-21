@@ -71,7 +71,7 @@ function ResultPage() {
             Explore Cultural Catalysts
           </a>
           <Link to="/" className="text-xs text-[color:var(--color-brand-ink-soft)] underline-offset-4 hover:underline">
-            Retake the assessment
+            Retake the quiz
           </Link>
         </div>
       </div>

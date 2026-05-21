@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { z } from "zod";
 import {
   CATALYST_QUESTIONS,
+  FILTER_QUESTION,
   LEVEL_QUESTIONS,
   LIKERT_LABELS,
   resolveArchetype,
@@ -17,6 +18,7 @@ export const Route = createFileRoute("/quiz")({
 });
 
 const ALL_QUESTIONS = [
+  { ...FILTER_QUESTION, part: 0 as const },
   ...CATALYST_QUESTIONS.map((q) => ({ ...q, part: 1 as const })),
   ...LEVEL_QUESTIONS.map((q) => ({ ...q, part: 2 as const })),
 ];
@@ -42,9 +44,11 @@ function QuizPage() {
 
   const partLabel = isGate
     ? "Almost there"
-    : currentQ!.part === 1
-      ? "Part 1 · Cultural Catalyst"
-      : "Part 2 · Levels of Leadership";
+    : currentQ!.part === 0
+      ? "Getting started"
+      : currentQ!.part === 1
+        ? "Part 1 · Cultural Catalyst"
+        : "Part 2 · Levels of Leadership";
 
   const stepLabel = isGate
     ? `${TOTAL_STEPS} of ${TOTAL_STEPS}`
@@ -56,7 +60,7 @@ function QuizPage() {
     setAnswers(next);
     // Auto-advance after a short pause for feedback
     setTimeout(() => {
-      if (stepIdx === CATALYST_QUESTIONS.length - 1) track("part1_completed");
+      if (stepIdx === CATALYST_QUESTIONS.length) track("part1_completed");
       if (stepIdx === ALL_QUESTIONS.length - 1) track("part2_completed");
       setStepIdx((i) => i + 1);
     }, 180);
@@ -72,7 +76,8 @@ function QuizPage() {
     const lvl: Record<string, Likert> = {};
     for (const q of CATALYST_QUESTIONS) if (answers[q.id]) cat[q.id] = answers[q.id];
     for (const q of LEVEL_QUESTIONS) if (answers[q.id]) lvl[q.id] = answers[q.id];
-    return scoreQuiz(cat, lvl);
+    const filter = (answers[FILTER_QUESTION.id] ?? 3) as Likert;
+    return scoreQuiz(cat, lvl, filter);
   }, [answers]);
 
   async function handleSubmitLead(e: React.FormEvent) {
