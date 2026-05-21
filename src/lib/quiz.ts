@@ -72,11 +72,11 @@ export const ARCHETYPES: Record<
   "essential-leader": {
     index: 0.5,
     name: "The Essential Leader",
-    tagline: "You make vision real.",
+    tagline: "Your excellence is the foundation everything else is built on.",
     description:
-      "You make vision real. The results, the culture, the momentum of every team you touch reflects your presence. You are not background. You are the foundation. Here is what we notice in leaders like you: the capacity to create something of your own is already built. The question is whether the calling has arrived yet. If you are feeling the pull toward something that is yours — something daring, something designed to outlast you — that pull is worth trusting.",
+      "People count on you because you deliver. Your work is precise, your presence is steadying, and the vision moves forward because of how you show up. The leaders and organizations you support are better because you are in them.",
     growth:
-      "Start here. Get curious. What would you change if you had full permission? What problem keeps finding you no matter where you work or what role you hold? What do you find yourself fixing, improving, or reimagining even when nobody asked you to? What would you want to still be true fifty years from now? Those questions are not idle. They are the beginning of a vision that belongs to you.",
+      "You are already doing the work of leadership. Your next edge is the question forming underneath it all: When you imagine the culture you want to live in, what is missing right now? What is the change you keep seeing that nobody around you seems to be making? What would you build if the only thing stopping you was the decision to start?",
   },
   "rising-catalyst": {
     index: 1,
@@ -181,16 +181,20 @@ export function resolveArchetype(scores: Scores): Archetype {
   // an Emerging Leader regardless of other scores.
   if (f <= 2) return "emerging-leader";
 
-  // If they are leading but not yet operating as a cultural catalyst (low
-  // catalyst alignment), they are an Essential Leader.
-  if (c <= 15) return "essential-leader";
+  // If they are leading but not yet operating as a cultural catalyst (their
+  // catalyst alignment is below "agree" on average), they are an Essential
+  // Leader regardless of how high their leadership level is. Catalyst
+  // identity must be earned through the Part 1 questions, not inherited from
+  // strong leadership scores.
+  // Threshold: average answer of 3.5+ across 6 catalyst questions (sum ≥ 21/30).
+  if (c < 21) return "essential-leader";
 
   // Rows: Catalyst score bands; Cols: leadership level groupings
   // 1–2 | 3 | 4 | 5
   const col = l <= 2 ? 0 : l === 3 ? 1 : l === 4 ? 2 : 3;
   let row: 0 | 1 | 2 | 3;
-  if (c <= 18) row = 1;
-  else if (c <= 24) row = 2;
+  if (c <= 24) row = 1;
+  else if (c <= 27) row = 2;
   else row = 3;
 
   const matrix: Archetype[][] = [
