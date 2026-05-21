@@ -194,6 +194,7 @@ export function resolveArchetype(scores: Scores): Archetype {
   const col = l <= 2 ? 0 : l === 3 ? 1 : l === 4 ? 2 : 3;
   let row: 0 | 1 | 2 | 3;
   if (c <= 24) row = 1;
+  else if (c <= 27) row = 2;
   else row = 3;
 
   const matrix: Archetype[][] = [
