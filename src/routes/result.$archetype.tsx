@@ -62,32 +62,57 @@ function ResultPage() {
           <p className="mt-3 text-[color:var(--color-brand-ink)] leading-relaxed">{a.growth}</p>
         </div>
 
-        <div className="mt-14 flex flex-col items-center gap-4">
+        <div className="mt-6 rounded-2xl border border-[color:var(--color-brand-line)] bg-white/60 p-6">
+          <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-brand-gold)]">
+            Resources for your growth
+          </p>
           {a.index <= 2 ? (
-            <a
-              href="https://bdea7q3yitht9z5kxk3xvkz4vh.hop.clickbank.net/"
-              onClick={() => track("cta_clicked", { archetype, type: "world_tapping_circle" })}
-              className="inline-flex items-center justify-center rounded-full bg-[color:var(--color-brand-ink)] px-10 py-4 text-sm font-medium tracking-wide text-[color:var(--color-brand-bg)] transition hover:bg-[color:var(--color-brand-gold)] hover:text-[color:var(--color-brand-ink)]"
-            >
-              Expand Your Leadership Capacity
-            </a>
+            <p className="mt-3 text-[color:var(--color-brand-ink)] leading-relaxed">
+              Expand your leadership capacity through the{" "}
+              <a
+                href="https://bdea7q3yitht9z5kxk3xvkz4vh.hop.clickbank.net/"
+                onClick={() => track("resource_clicked", { archetype, type: "world_tapping_circle" })}
+                className="underline underline-offset-4 hover:text-[color:var(--color-brand-gold)]"
+              >
+                World Tapping Circle
+              </a>
+              .
+            </p>
           ) : a.index <= 4 ? (
-            <a
-              href="https://www.culturalcatalysts.net/"
-              onClick={() => track("cta_clicked", { archetype, type: "cultural_catalysts" })}
-              className="inline-flex items-center justify-center rounded-full bg-[color:var(--color-brand-ink)] px-10 py-4 text-sm font-medium tracking-wide text-[color:var(--color-brand-bg)] transition hover:bg-[color:var(--color-brand-gold)] hover:text-[color:var(--color-brand-ink)]"
-            >
-              Join Our Leadership Councils
-            </a>
+            <p className="mt-3 text-[color:var(--color-brand-ink)] leading-relaxed">
+              Join our in-person leadership councils in Boulder, CO or online at{" "}
+              <a
+                href="https://www.culturalcatalysts.net/"
+                onClick={() => track("resource_clicked", { archetype, type: "cultural_catalysts" })}
+                className="underline underline-offset-4 hover:text-[color:var(--color-brand-gold)]"
+              >
+                culturalcatalysts.net
+              </a>
+              .
+            </p>
           ) : (
-            <a
-              href="mailto:tracy@culturalcatalysts.net"
-              onClick={() => track("cta_clicked", { archetype, type: "email_tracy" })}
-              className="inline-flex items-center justify-center rounded-full bg-[color:var(--color-brand-ink)] px-10 py-4 text-sm font-medium tracking-wide text-[color:var(--color-brand-bg)] transition hover:bg-[color:var(--color-brand-gold)] hover:text-[color:var(--color-brand-ink)]"
-            >
-              Get Involved
-            </a>
+            <p className="mt-3 text-[color:var(--color-brand-ink)] leading-relaxed">
+              If you'd like to get involved, reach out directly at{" "}
+              <a
+                href="mailto:tracy@culturalcatalysts.net"
+                onClick={() => track("resource_clicked", { archetype, type: "email_tracy" })}
+                className="underline underline-offset-4 hover:text-[color:var(--color-brand-gold)]"
+              >
+                tracy@culturalcatalysts.net
+              </a>
+              .
+            </p>
           )}
+        </div>
+
+        <div className="mt-14 flex flex-col items-center gap-4">
+          <a
+            href="https://www.culturalcatalysts.net/"
+            onClick={() => track("cta_clicked", { archetype })}
+            className="inline-flex items-center justify-center rounded-full bg-[color:var(--color-brand-ink)] px-10 py-4 text-sm font-medium tracking-wide text-[color:var(--color-brand-bg)] transition hover:bg-[color:var(--color-brand-gold)] hover:text-[color:var(--color-brand-ink)]"
+          >
+            Explore Cultural Catalysts
+          </a>
           <Link to="/" className="text-xs text-[color:var(--color-brand-ink-soft)] underline-offset-4 hover:underline">
             Retake the quiz
           </Link>
