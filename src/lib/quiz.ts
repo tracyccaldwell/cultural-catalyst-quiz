@@ -33,11 +33,11 @@ export const LEVEL_QUESTIONS: LevelQuestion[] = [
   { id: "l3a", level: 3, text: "I consistently produce meaningful results that others can see and rally around." },
   { id: "l3b", level: 3, text: "My team produces results because of the momentum I create." },
   // L4 People Development — people follow because of what I've done for them
-  { id: "l4a", level: 4, text: "I actively invest in developing other leaders, not just followers." },
-  { id: "l4b", level: 4, text: "People I've mentored are now leading their own teams or initiatives." },
+  { id: "l4a", level: 4, text: "I spend significant time and energy developing other leaders — not just managing followers." },
+  { id: "l4b", level: 4, text: "There are people I have personally mentored who are now leading their own teams or initiatives." },
   // L5 Pinnacle — people follow because of who I am and what I represent
-  { id: "l5a", level: 5, text: "I am known and respected beyond my immediate organization for what I stand for." },
-  { id: "l5b", level: 5, text: "I have raised up leaders who are themselves raising up other leaders." },
+  { id: "l5a", level: 5, text: "I am sought out and respected far beyond my own organization for what I stand for and have built." },
+  { id: "l5b", level: 5, text: "The leaders I've developed are now developing other leaders — my influence is compounding through generations." },
 ];
 
 export type Archetype =
@@ -59,7 +59,7 @@ export const ARCHETYPES: Record<
     description:
       "You're stepping into leadership and beginning to discover what you're called to. Your work matters, and the seeds of a bigger purpose are already visible. Focus on building trust with the people closest to you — that's where catalytic leadership begins.",
     growth:
-      "Next step: deepen relationships (Level 2 — Permission) so people follow you by choice, not obligation.",
+      "Right now, people may be following you because of your role or title. Your next growth edge is relational: build genuine trust with the people closest to you so they follow you by choice, not obligation. Invest in knowing them as people before leading them as a team.",
   },
   "rising-catalyst": {
     index: 1,
@@ -68,7 +68,7 @@ export const ARCHETYPES: Record<
     description:
       "You sense your work has a higher purpose, and you're starting to challenge what 'normal' looks like in your space. Relationships are forming around you. Now is the time to translate vision into visible results that people can rally around.",
     growth:
-      "Next step: produce results others can see (Level 3 — Production) to convert influence into momentum.",
+      "You've earned relational influence — people like and trust you. Your next growth edge is production: turn that goodwill into visible results others can rally around. Pick one initiative that proves the vision in practice, and let momentum do the recruiting for you.",
   },
   "connected-catalyst": {
     index: 2,
@@ -77,7 +77,7 @@ export const ARCHETYPES: Record<
     description:
       "People follow you because they trust you. Your work is aligned with purpose, and you're recognized by those around you as someone who sees what others miss. The opportunity ahead is to multiply yourself by developing other leaders.",
     growth:
-      "Next step: pour into emerging leaders (Level 4 — People Development) so your impact compounds.",
+      "You have trust and traction. Your next growth edge is multiplication: stop trying to do more yourself and start pouring into emerging leaders. Identify 2–3 people with capacity, invest in them weekly, and watch your impact compound through them.",
   },
   "catalyst-in-action": {
     index: 3,
@@ -86,7 +86,7 @@ export const ARCHETYPES: Record<
     description:
       "You don't just imagine new norms — you build them. Your work delivers results and your purpose is unmistakable. The next horizon is to make your influence outlast you by developing leaders who can carry the mission further.",
     growth:
-      "Next step: develop leaders who develop leaders (Level 4 → 5) so the movement scales beyond you.",
+      "You're producing what others only talk about. Your next growth edge is legacy: the work needs to outlast you. Begin intentionally developing leaders who are themselves developing leaders, so the movement scales past your own capacity and reaches generations you'll never personally meet.",
   },
   "catalyst-of-catalysts": {
     index: 4,
@@ -95,7 +95,7 @@ export const ARCHETYPES: Record<
     description:
       "You don't just lead — you raise leaders who raise leaders. Your work redefines what's possible in your industry, and others credit you with their own breakthroughs. You are one shift away from Pinnacle-level cultural impact.",
     growth:
-      "Next step: steward a legacy and platform (Level 5 — Pinnacle) that reaches far beyond your current circle.",
+      "You're already multiplying movements through people. Your next growth edge is stewardship at scale: protect the integrity of what you've built, expand your platform beyond your current circle, and make decisions today that your successors will still be benefiting from in 20 years.",
   },
   "cultural-catalyst": {
     index: 5,
@@ -104,7 +104,7 @@ export const ARCHETYPES: Record<
     description:
       "You operate at the intersection of purpose, production, and people. You've reshaped how your industry thinks, speaks, and acts — and you've raised up generations of leaders doing the same. Your work is your message, and your life is your mission.",
     growth:
-      "Your call now: protect the work, mentor the next wave, and steward the cultural shift you've started.",
+      "You are redefining normal. Your work now is stewardship: protect what you've built from drift, mentor the next wave of catalysts personally, and steward the cultural shift you've started so it deepens rather than dilutes over time.",
   },
 };
 
@@ -137,13 +137,17 @@ export function scoreQuiz(
     levelSubscores[q.level] += levelAnswers[q.id] ?? 0;
   }
 
-  // Highest subscore wins; ties broken by higher level (Maxwell is cumulative)
+  // Maxwell's 5 Levels are cumulative — you operate at the HIGHEST level you've
+  // genuinely demonstrated, not the one with the largest raw score. A leader
+  // who clearly develops other leaders (L4) is a Level 4 leader even if they
+  // also still strongly agree they have a position (L1).
+  // Threshold: average answer of 3.5+ on both questions for that level (sum ≥ 7 out of 10).
+  const QUALIFY = 7;
   let leadershipLevel: 1 | 2 | 3 | 4 | 5 = 1;
-  let best = -1;
-  for (const lvl of [1, 2, 3, 4, 5] as const) {
-    if (levelSubscores[lvl] >= best) {
-      best = levelSubscores[lvl];
+  for (const lvl of [5, 4, 3, 2] as const) {
+    if (levelSubscores[lvl] >= QUALIFY) {
       leadershipLevel = lvl;
+      break;
     }
   }
 

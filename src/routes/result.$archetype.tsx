@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { z } from "zod";
-import { ARCHETYPES, ARCHETYPE_ORDER, LEVEL_NAMES, type Archetype } from "@/lib/quiz";
+import { ARCHETYPES, type Archetype } from "@/lib/quiz";
 import { track } from "@/lib/analytics";
 
 const searchSchema = z.object({
@@ -55,43 +55,11 @@ function ResultPage() {
 
         <p className="text-lg leading-relaxed">{a.description}</p>
 
-        {l ? (
-          <div className="mt-10 rounded-2xl border border-[color:var(--color-brand-line)] bg-white/60 p-6">
-            <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-brand-ink-soft)]">
-              Your current Maxwell level
-            </p>
-            <p className="mt-2 text-2xl">
-              <span className="font-serif italic">Level {l}</span> —{" "}
-              {LEVEL_NAMES[l as 1 | 2 | 3 | 4 | 5]}
-            </p>
-            <p className="mt-4 text-[color:var(--color-brand-ink-soft)]">{a.growth}</p>
-          </div>
-        ) : null}
-
-        {/* Archetype ladder */}
-        <div className="mt-12">
-          <p className="mb-4 text-xs uppercase tracking-[0.2em] text-[color:var(--color-brand-ink-soft)]">
-            The six archetypes
+        <div className="mt-10 rounded-2xl border border-[color:var(--color-brand-line)] bg-white/60 p-6">
+          <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-brand-gold)]">
+            Your growth edge
           </p>
-          <ol className="space-y-2">
-            {ARCHETYPE_ORDER.map((key, i) => {
-              const item = ARCHETYPES[key];
-              const isMe = key === archetype;
-              return (
-                <li
-                  key={key}
-                  className={`flex items-center gap-4 rounded-full px-5 py-3 text-sm transition ${
-                    isMe
-                      ? "bg-[color:var(--color-brand-gold)]/20 text-[color:var(--color-brand-ink)]"
-                      : "text-[color:var(--color-brand-ink-soft)]"
-                  }`}
-                >
-                  <span className="font-mono text-xs">{i}</span>
-                  <span className={isMe ? "font-medium" : ""}>{item.name}</span>
-                </li>
-              );
-            })}
-          </ol>
+          <p className="mt-3 text-[color:var(--color-brand-ink)] leading-relaxed">{a.growth}</p>
         </div>
 
         <div className="mt-14 flex flex-col items-center gap-4">
