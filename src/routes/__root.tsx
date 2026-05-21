@@ -72,11 +72,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "What type of Cultural Catalyst are you? | Cultural Catalysts" },
+      {
+        name: "description",
+        content:
+          "Discover your Cultural Catalyst archetype and where you stand on John Maxwell's 5 Levels of Leadership. A short, free assessment.",
+      },
+      { name: "author", content: "Cultural Catalysts" },
+      { property: "og:title", content: "What type of Cultural Catalyst are you?" },
+      {
+        property: "og:description",
+        content:
+          "Take the free 16-question assessment and discover your Cultural Catalyst archetype.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
