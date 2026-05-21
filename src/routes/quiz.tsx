@@ -60,7 +60,7 @@ function QuizPage() {
     setAnswers(next);
     // Auto-advance after a short pause for feedback
     setTimeout(() => {
-      if (stepIdx === CATALYST_QUESTIONS.length - 1) track("part1_completed");
+      if (stepIdx === CATALYST_QUESTIONS.length) track("part1_completed");
       if (stepIdx === ALL_QUESTIONS.length - 1) track("part2_completed");
       setStepIdx((i) => i + 1);
     }, 180);
