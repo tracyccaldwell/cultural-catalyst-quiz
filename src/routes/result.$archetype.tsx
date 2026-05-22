@@ -66,7 +66,19 @@ function ResultPage() {
           <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-brand-gold)]">
             Resources for your growth
           </p>
-          {a.index <= 2 ? (
+          {archetype === "essential-leader" ? (
+            <p className="mt-3 text-[color:var(--color-brand-ink)] leading-relaxed">
+              Get clear on your cultural contribution and your ideal vision for your life through{" "}
+              <a
+                href="https://www.mindvalley.com/lifebook"
+                onClick={() => track("resource_clicked", { archetype, type: "lifebook" })}
+                className="underline underline-offset-4 hover:text-[color:var(--color-brand-gold)]"
+              >
+                Lifebook
+              </a>
+              .
+            </p>
+          ) : a.index <= 2 ? (
             <p className="mt-3 text-[color:var(--color-brand-ink)] leading-relaxed">
               Expand your leadership capacity through the{" "}
               <a
