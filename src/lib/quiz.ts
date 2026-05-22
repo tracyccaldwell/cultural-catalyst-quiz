@@ -63,7 +63,7 @@ export const ARCHETYPES: Record<
   "emerging-leader": {
     index: 0,
     name: "The Emerging Leader",
-    tagline: "You are at the starting line.",
+    tagline: "Your leadership starts now.",
     description:
       "You are not yet in a position — formal or informal — where others are looking to you for direction. This is a doorway to a larger contribution. Every leader starts here, and the work you do now to clarify who you are and what you stand for will shape the influence you carry later.",
     growth:
