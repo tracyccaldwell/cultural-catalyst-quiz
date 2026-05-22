@@ -65,7 +65,7 @@ export const ARCHETYPES: Record<
     name: "The Emerging Leader",
     tagline: "You are at the starting line.",
     description:
-      "You are not yet in a position — formal or informal — where others are looking to you for direction. That is not a deficiency; it is a doorway. Every leader starts here, and the work you do now to clarify who you are and what you stand for will shape the influence you carry later.",
+      "You are not yet in a position — formal or informal — where others are looking to you for direction. This is a doorway to a larger contribution. Every leader starts here, and the work you do now to clarify who you are and what you stand for will shape the influence you carry later.",
     growth:
       "Your next growth edge is positioning yourself to lead. Begin by asking: who do I want to serve, and what do I want to be known for? Volunteer for ownership on small projects. Build a track record of being trustworthy with little before you are trusted with much. Identify one leader whose influence you admire and study how they earned it.",
   },
@@ -81,18 +81,18 @@ export const ARCHETYPES: Record<
   "rising-catalyst": {
     index: 1,
     name: "The Rising Catalyst",
-    tagline: "You're finding your voice.",
+    tagline: "Your vision is real. Your voice is finding its reach.",
     description:
-      "You sense your work has a higher purpose, and you're starting to challenge what 'normal' looks like in your space. Relationships are forming around you. Now is the time to translate vision into visible results that people can rally around.",
+      "You sense your work is pointed toward something larger, and the people around you are beginning to feel it too. The calling is alive in you. What is opening up now is the relational foundation that every level of leadership is built on.",
     growth:
-      "Right now, people may follow you because of your title or proximity, not yet because of trust earned. Your next growth edge is relational: build genuine permission with the people closest to you. Ask each person what they need most from a leader. Give credit publicly, take responsibility privately. Schedule one meeting this week that is about connecting, not directing — trust is the runway every other level is built on.",
+      "The most powerful thing you can do right now is build genuine trust with the people closest to you. Start by asking each person what they need most from a leader. Give credit publicly and take responsibility privately. Schedule one conversation this week that is about connecting rather than directing. Let people feel seen beyond what they produce. Trust is not built in grand gestures. It compounds quietly, one honest conversation at a time. You already have the vision. The relationships you build now become the runway it launches from.",
   },
   "connected-catalyst": {
     index: 2,
     name: "The Connected Catalyst",
     tagline: "Your relationships are your runway.",
     description:
-      "People follow you because they trust you. Your work is aligned with purpose, and you're recognized by those around you as someone who sees what others miss. The opportunity ahead is to multiply yourself by developing other leaders.",
+      "People follow you because they trust you. Your work is aligned with purpose, and you're recognized by those around you as someone who sees what others miss. The opportunity ahead is to help your team win consistently.",
     growth:
       "You have earned permission — people follow you because they want to. Your next growth edge is production: turn that goodwill into results the team can rally around. Define your three most important outcomes for this quarter. Build the systems and remove the roadblocks that let your people win. Celebrate the wins publicly and name who made them possible — credibility compounds when momentum is shared.",
   },
