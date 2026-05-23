@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ResultArchetypeRouteImport } from './routes/result.$archetype'
+import { Route as ApiPublicSubmitLeadRouteImport } from './routes/api/public/submit-lead'
 
 const QuizRoute = QuizRouteImport.update({
   id: '/quiz',
@@ -28,35 +29,49 @@ const ResultArchetypeRoute = ResultArchetypeRouteImport.update({
   path: '/result/$archetype',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicSubmitLeadRoute = ApiPublicSubmitLeadRouteImport.update({
+  id: '/api/public/submit-lead',
+  path: '/api/public/submit-lead',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/quiz': typeof QuizRoute
   '/result/$archetype': typeof ResultArchetypeRoute
+  '/api/public/submit-lead': typeof ApiPublicSubmitLeadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/quiz': typeof QuizRoute
   '/result/$archetype': typeof ResultArchetypeRoute
+  '/api/public/submit-lead': typeof ApiPublicSubmitLeadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/quiz': typeof QuizRoute
   '/result/$archetype': typeof ResultArchetypeRoute
+  '/api/public/submit-lead': typeof ApiPublicSubmitLeadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/quiz' | '/result/$archetype'
+  fullPaths: '/' | '/quiz' | '/result/$archetype' | '/api/public/submit-lead'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/quiz' | '/result/$archetype'
-  id: '__root__' | '/' | '/quiz' | '/result/$archetype'
+  to: '/' | '/quiz' | '/result/$archetype' | '/api/public/submit-lead'
+  id:
+    | '__root__'
+    | '/'
+    | '/quiz'
+    | '/result/$archetype'
+    | '/api/public/submit-lead'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   QuizRoute: typeof QuizRoute
   ResultArchetypeRoute: typeof ResultArchetypeRoute
+  ApiPublicSubmitLeadRoute: typeof ApiPublicSubmitLeadRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +97,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResultArchetypeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/submit-lead': {
+      id: '/api/public/submit-lead'
+      path: '/api/public/submit-lead'
+      fullPath: '/api/public/submit-lead'
+      preLoaderRoute: typeof ApiPublicSubmitLeadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +111,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   QuizRoute: QuizRoute,
   ResultArchetypeRoute: ResultArchetypeRoute,
+  ApiPublicSubmitLeadRoute: ApiPublicSubmitLeadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

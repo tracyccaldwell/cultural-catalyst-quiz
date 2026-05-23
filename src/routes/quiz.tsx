@@ -101,19 +101,19 @@ function QuizPage() {
       source: "culturalcatalysts-quiz",
     };
 
-    const webhookUrl = import.meta.env.VITE_CLICKFUNNELS_WEBHOOK_URL as string | undefined;
-    if (webhookUrl) {
-      try {
-        await fetch(webhookUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-          mode: "no-cors",
-        });
-      } catch (err) {
-        console.error("Webhook failed", err);
-        track("webhook_failed", { archetype });
+    try {
+      const res = await fetch("/api/public/submit-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        console.error("Lead submission failed", res.status);
+        track("webhook_failed", { archetype, status: res.status });
       }
+    } catch (err) {
+      console.error("Lead submission error", err);
+      track("webhook_failed", { archetype });
     }
 
     try {
