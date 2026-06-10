@@ -28,24 +28,32 @@ export const Route = createFileRoute("/api/public/submit-lead")({
           return new Response("Invalid payload", { status: 400 });
         }
 
-        const webhookUrl = process.env.CLICKFUNNELS_WEBHOOK_URL;
+        const webhookUrl = process.env.ZAPIER_WEBHOOK_URL;
         if (!webhookUrl) {
-          console.error("CLICKFUNNELS_WEBHOOK_URL is not configured");
+          console.error("ZAPIER_WEBHOOK_URL is not configured");
           return new Response("Server not configured", { status: 503 });
         }
+
+        const zapierPayload = {
+          email: parsed.data.email,
+          name: parsed.data.name,
+          archetype: parsed.data.archetype,
+          leadershipLevel: parsed.data.leadershipLevel,
+          catalystScore: parsed.data.catalystScore,
+        };
 
         try {
           const res = await fetch(webhookUrl, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(parsed.data),
+            body: JSON.stringify(zapierPayload),
           });
           if (!res.ok) {
-            console.error("ClickFunnels webhook failed", res.status);
+            console.error("Zapier webhook failed", res.status);
             return new Response("Upstream error", { status: 502 });
           }
         } catch (err) {
-          console.error("ClickFunnels webhook error", err);
+          console.error("Zapier webhook error", err);
           return new Response("Upstream error", { status: 502 });
         }
 
