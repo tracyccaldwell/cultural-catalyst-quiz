@@ -3,10 +3,12 @@ import { z } from "zod";
 
 const PayloadSchema = z.object({
   name: z.string().trim().min(1).max(100),
+  first_name: z.string().trim().min(1).max(100).optional(),
   email: z.string().trim().email().max(255),
   archetype: z.string().min(1).max(64),
   catalystScore: z.number().min(0).max(30),
   leadershipLevel: z.number().min(1).max(5),
+  leadershiplevel_918ff1a682: z.number().min(1).max(5).optional(),
   levelSubscores: z.record(z.string(), z.number().min(0).max(10)),
   completedAt: z.string().min(1).max(64),
   source: z.string().min(1).max(64),
@@ -36,9 +38,9 @@ export const Route = createFileRoute("/api/public/submit-lead")({
 
         const zapierPayload = {
           email: parsed.data.email,
-          name: parsed.data.name,
+          first_name: parsed.data.first_name ?? parsed.data.name,
           archetype: parsed.data.archetype,
-          leadershipLevel: parsed.data.leadershipLevel,
+          leadershiplevel_918ff1a682: parsed.data.leadershiplevel_918ff1a682 ?? parsed.data.leadershipLevel,
           catalystScore: parsed.data.catalystScore,
         };
 
