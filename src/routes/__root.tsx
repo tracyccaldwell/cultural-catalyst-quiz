@@ -79,7 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Discover your Cultural Catalyst archetype and where you stand on John Maxwell's 5 Levels of Leadership. A short, free assessment.",
       },
       { name: "author", content: "Cultural Catalysts" },
-      { property: "og:title", content: "What type of Cultural Catalyst are you?" },
+      { property: "og:title", content: "What type of Cultural Catalyst are you? | Cultural Catalysts" },
       {
         property: "og:description",
         content:
@@ -88,6 +88,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "What type of Cultural Catalyst are you? | Cultural Catalysts" },
+      { name: "description", content: "Discover your Cultural Catalyst type and John Maxwell leadership level with this interactive quiz." },
+      { property: "og:description", content: "Discover your Cultural Catalyst type and John Maxwell leadership level with this interactive quiz." },
+      { name: "twitter:description", content: "Discover your Cultural Catalyst type and John Maxwell leadership level with this interactive quiz." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/47d29b15-a5ee-4a90-b65e-811b553afd86/id-preview-657ed3bc--3d8c564c-81c2-4ed6-a430-644e9592a41a.lovable.app-1779835705789.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/47d29b15-a5ee-4a90-b65e-811b553afd86/id-preview-657ed3bc--3d8c564c-81c2-4ed6-a430-644e9592a41a.lovable.app-1779835705789.png" },
     ],
     links: [
       {
