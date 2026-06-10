@@ -91,11 +91,11 @@ function QuizPage() {
     setSubmitting(true);
     const archetype = resolveArchetype(scores);
     const payload = {
-      name: parsed.data.name,
+      first_name: parsed.data.name,
       email: parsed.data.email,
       archetype,
       catalystScore: scores.catalystScore,
-      leadershipLevel: scores.leadershipLevel,
+      leadershiplevel_918ff1a682: scores.leadershipLevel,
       levelSubscores: scores.levelSubscores,
       completedAt: new Date().toISOString(),
       source: "culturalcatalysts-quiz",
