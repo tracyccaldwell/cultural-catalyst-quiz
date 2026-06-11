@@ -37,7 +37,7 @@ export const Route = createFileRoute("/api/public/submit-lead")({
         }
 
         const zapierPayload = {
-          email: parsed.data.email,
+          email_address: parsed.data.email,
           first_name: parsed.data.first_name ?? parsed.data.name,
           archetype: parsed.data.archetype,
           leadershiplevel_918ff1a682: parsed.data.leadershiplevel_918ff1a682 ?? parsed.data.leadershipLevel,
