@@ -66,13 +66,7 @@ export const Route = createFileRoute("/api/public/submit-lead")({
           return new Response("Server not configured", { status: 503 });
         }
 
-        const zapierPayload = {
-          email: parsed.data.email,
-          first_name: parsed.data.first_name,
-          archetype: parsed.data.archetype,
-          catalystScore: parsed.data.catalystScore,
-          leadershiplevel_918ff1a682: parsed.data.leadershiplevel_918ff1a682,
-        };
+        const zapierPayload = parsed.data;
 
         try {
           const res = await fetch(webhookUrl, {
