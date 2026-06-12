@@ -92,7 +92,7 @@ function QuizPage() {
     const archetype = resolveArchetype(scores);
     const payload = {
       first_name: parsed.data.name,
-      email_address: parsed.data.email,
+      email: parsed.data.email,
       archetype,
       catalystScore: scores.catalystScore,
       leadershiplevel_918ff1a682: scores.leadershipLevel,
